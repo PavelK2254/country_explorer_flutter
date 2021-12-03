@@ -22,7 +22,9 @@ class MainScreenCubit extends Cubit<MainScreenState> {
   }
 
   QueryOptions _queryOptions(String query) => QueryOptions(
-      fetchPolicy: FetchPolicy.cacheAndNetwork, document: gql(query));
+        fetchPolicy: FetchPolicy.cacheAndNetwork,
+        document: gql(query),
+      );
 
   Future<void> getData() async {
     try {
@@ -73,12 +75,18 @@ class MainScreenCubit extends Cubit<MainScreenState> {
 
   void buildSearchResults(String query) {
     final List<Country> filteredCountries = countries
-        .where((country) =>
-            country.name.toLowerCase().contains(query.toLowerCase()))
+        .where(
+          (country) => country.name.toLowerCase().contains(query.toLowerCase()),
+        )
         .toList();
     emit(MainScreenQueryLoaded(filteredCountries, continents));
   }
 
-  void emitCountriesState() => emit(MainScreenQueryLoaded(countries, continents,
-      selectedContinentCode: selectedContinentCode));
+  void emitCountriesState() => emit(
+        MainScreenQueryLoaded(
+          countries,
+          continents,
+          selectedContinentCode: selectedContinentCode,
+        ),
+      );
 }

@@ -10,15 +10,15 @@ import 'package:mockito/mockito.dart';
 class MockGraphQLRepository extends Mock implements GraphQLRepository {
   @override
   final GraphQLClient client = GraphQLClient(
-      link: HttpLink('https://countries.trevorblades.com/'),
-      cache: GraphQLCache()
+    link: HttpLink('https://countries.trevorblades.com/'),
+    cache: GraphQLCache(),
   );
 }
 
 void main() {
   late MockGraphQLRepository mockGraphQLRepository;
   final List<Country> _mockCountriesList = [
-    Country(code: 'test', continent: Continent(code: 'test',name: 'Test'))
+    Country(code: 'test', continent: Continent(code: 'test', name: 'Test'))
   ];
 
   setUp(() {
@@ -32,15 +32,14 @@ void main() {
   );
 
   blocTest(
-      'getCountriesList emits MainScreenQueryLoaded',
-      build: () {
-        when()
-        return MainScreenCubit(mockGraphQLRepository);
-      },
-      act: (MainScreenCubit bloc) => bloc.getCountriesList('ALL'),
-      expect: () => [
-        MainScreenLoading(),
-        MainScreenQueryLoaded(_mockCountriesList, List.empty())
-      ],
+    'getCountriesList emits MainScreenQueryLoaded',
+    build: () {
+      return MainScreenCubit(mockGraphQLRepository);
+    },
+    act: (MainScreenCubit bloc) => bloc.getCountriesList('ALL'),
+    expect: () => [
+      MainScreenLoading(),
+      MainScreenQueryLoaded(_mockCountriesList, List.empty())
+    ],
   );
 }

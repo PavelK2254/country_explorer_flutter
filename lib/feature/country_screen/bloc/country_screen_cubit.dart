@@ -29,7 +29,11 @@ class CountryScreenCubit extends Cubit<CountryScreenState> {
   }
 
   void _initQueryObserver(String code) {
-    observableQuery = _graphQLRepository.client.watchQuery(WatchQueryOptions(
-        fetchPolicy: FetchPolicy.networkOnly, document: gql(getCountry(code))));
+    observableQuery = _graphQLRepository.client.watchQuery(
+      WatchQueryOptions(
+        fetchPolicy: FetchPolicy.networkOnly,
+        document: gql(getCountry(code)),
+      ),
+    );
   }
 }

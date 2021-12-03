@@ -7,24 +7,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
-  runApp(RepositoryProvider(
-    create: (context) => GraphQLRepository(),
-    child: MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => MainScreenCubit(
-            RepositoryProvider.of(context),
-          )..getData(),
-        ),
-        BlocProvider(
-          create: (context) => CountryScreenCubit(
-            RepositoryProvider.of(context),
+  runApp(
+    RepositoryProvider(
+      create: (context) => GraphQLRepository(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => MainScreenCubit(
+              RepositoryProvider.of(context),
+            )..getData(),
           ),
-        )
-      ],
-      child: MyApp(),
+          BlocProvider(
+            create: (context) => CountryScreenCubit(
+              RepositoryProvider.of(context),
+            ),
+          )
+        ],
+        child: MyApp(),
+      ),
     ),
-  ));
+  );
 }
 
 class MyApp extends StatelessWidget {

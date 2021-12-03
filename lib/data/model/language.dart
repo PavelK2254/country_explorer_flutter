@@ -9,8 +9,8 @@ class Language with _$Language {
     @Default('n/a') String code,
     @Default('n/a') String name,
     @Default('n/a') String native,
-    @Default(false) bool rtl}) =
-      _Language;
+    @Default(false) bool rtl,
+  }) = _Language;
 
   factory Language.fromJson(Map<String, dynamic> json) =>
       _$LanguageFromJson(json);

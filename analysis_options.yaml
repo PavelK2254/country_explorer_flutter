@@ -4,8 +4,24 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+    - "**/*.config.dart"
+
   errors:
-    sort_pub_dependencies: ignore
     missing_required_param: error
     missing_return: error
     must_be_immutable: error
+    avoid_setters_without_getters: ignore
+    unnecessary_getters_setters: ignore
+    invalid_annotation_target: ignore
+
+  enable-experiment:
+    - nonfunction-type-aliases
+
+linter:
+  rules:
+    sort_pub_dependencies: false
+    directives_ordering: false
+    depend_on_referenced_packages: false
+    require_trailing_commas: true
+    implementation_imports: false

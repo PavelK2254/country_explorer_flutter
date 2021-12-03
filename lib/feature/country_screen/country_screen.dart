@@ -41,34 +41,55 @@ class CountryScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                    child: Center(
-                        child: Text('${country.name} ${country.emoji}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline3!
-                                .copyWith(color: Colors.black)))),
-                _textWIthIcon(context, 'Country code:   ${country.code}',
-                    Icons.perm_identity),
-                _textWIthIcon(context, 'Continent:   ${country.continent.name}',
-                    Icons.language),
-                _textWIthIcon(context, 'Capital:   ${country.capital}',
-                    Icons.account_balance),
-                _textWIthIcon(context, 'Currency:  ${country.currency}',
-                    Icons.monetization_on),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Center(
+                  child: Text(
+                    '${country.name} ${country.emoji}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3!
+                        .copyWith(color: Colors.black),
+                  ),
+                ),
+              ),
+              _textWIthIcon(
+                context,
+                'Country code:   ${country.code}',
+                Icons.perm_identity,
+              ),
+              _textWIthIcon(
+                context,
+                'Continent:   ${country.continent.name}',
+                Icons.language,
+              ),
+              _textWIthIcon(
+                context,
+                'Capital:   ${country.capital}',
+                Icons.account_balance,
+              ),
+              _textWIthIcon(
+                context,
+                'Currency:  ${country.currency}',
+                Icons.monetization_on,
+              ),
+              _textWIthIcon(
+                context,
+                'Phone code:  +${country.phone}',
+                Icons.phone,
+              ),
+              if (country.languages.isNotEmpty)
                 _textWIthIcon(
-                    context, 'Phone code:  +${country.phone}', Icons.phone),
-                if (country.languages.isNotEmpty)
-                  _textWIthIcon(
-                      context,
-                      'Languages:   ${country.languages.map((e) => e.native).join("  , ")}',
-                      Icons.speaker_notes)
-                else
-                  const SizedBox(),
-              ]),
+                  context,
+                  'Languages:   ${country.languages.map((e) => e.native).join("  , ")}',
+                  Icons.speaker_notes,
+                )
+              else
+                const SizedBox(),
+            ],
+          ),
         ),
       );
 
@@ -77,7 +98,7 @@ class CountryScreen extends StatelessWidget {
         title: Text(text, style: Theme.of(context).textTheme.subtitle2),
         leading: Icon(
           iconData,
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
         ),
       );
 }
