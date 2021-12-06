@@ -5,7 +5,7 @@ import 'package:country_explorer/data/model/country.dart';
 import 'package:country_explorer/feature/main_screen/bloc/main_screen_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockGraphQLRepository extends Mock implements GraphQLRepository {
   @override
