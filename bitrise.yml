@@ -53,7 +53,9 @@ workflows:
       - flutter-analyze@0:
           inputs:
             - project_location: $BITRISE_FLUTTER_PROJECT_LOCATION
-      - flutter-test@1: {}
+      - flutter-test@1:
+          inputs:
+            - generate_code_coverage_files: 'yes'
       - deploy-to-bitrise-io@2: {}
       - cache-push@2: {}
 meta:
