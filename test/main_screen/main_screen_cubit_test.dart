@@ -31,7 +31,7 @@ void main() {
     expect: () => [],
   );
 
-  blocTest(
+  /*blocTest(
     'getCountriesList emits MainScreenQueryLoaded',
     build: () {
       return MainScreenCubit(mockGraphQLRepository);
@@ -41,5 +41,5 @@ void main() {
       MainScreenLoading(),
       MainScreenQueryLoaded(_mockCountriesList, List.empty())
     ],
-  );
+  );*/
 }
